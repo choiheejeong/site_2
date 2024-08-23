@@ -46,3 +46,56 @@ const swiper1 = new Swiper('#main_view', {
     1024:{slidesPerView:5, spaceBetween:30},
   }
 });
+
+
+//서치영역
+
+/* 상단 부분이 다 잡힘...
+var search = document.getElementById("search");  //객체지정
+var inner = document.querySelector(".inner");
+var c_search = document.querySelector(".close_search");
+
+
+inner.addEventListener("click",function(){
+  search.classList.add("show");
+});
+c_search.addEventListener("click",function(){
+  search.classList.remove("show");
+});
+*/
+
+let search = document.getElementById("search");
+let open_btn = document.getElementsByClassName("open_search");
+  //배열로 만들어짐.
+let close_btn = document.querySelector(".close_search");
+
+//돋보기 버튼 클릭 시
+open_btn[0].addEventListener("click",function(e){
+  e.preventDefault();  //태그의 본래 기능을 동작시키지 않음.
+  search.classList.add("show");
+});
+
+//닫기 버튼 클릭 시
+close_btn.addEventListener("click",function(){
+  search.classList.remove("show");
+});
+
+//ESC키를 눌렀을 때
+window.addEventListener("keydown",function(e){
+  var state = search.classList.contains("show");
+  var esc = (e.key === "Escape");  //누른 키가 "ESC"키 맞는지 확인
+  if(state && esc){
+    search.classList.remove("show");
+  }
+});
+
+
+//미디어쿼리
+var menu_btn = document.querySelector(".open_menu");
+var menu = document.querySelector(".menu");
+
+menu_btn.addEventListener("click",function(e){
+  e.preventDefault();  //태그의 본래 기능을 동작시키지 않음.
+  menu.classList.toggle("active");
+  this.classList.toggle("active");  //this:자기 자신(menu_btn)
+});
